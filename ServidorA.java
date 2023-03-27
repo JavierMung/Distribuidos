@@ -51,7 +51,7 @@ public class ServidorA {
                     InetAddress direccionOrigen = pack.getAddress();*/
                     //          if (!direccionLocal.equals(direccionOrigen)) {
                     byte[] mensaje = recibe_mensaje(socket, 1024);
-                    String mensaje_parseado = new String(mensaje, "UTF-8");
+                    String mensaje_parseado = new String(mensaje, "ISO-8859-1");
                     String[] separar_mensaje = mensaje_parseado.split(":");
                     System.out.println(separar_mensaje[0] + "-----------> " + separar_mensaje[1]);
                     System.out.println("Escribir Mensaje:");
@@ -73,15 +73,15 @@ public class ServidorA {
             InetSocketAddress grupo = new InetSocketAddress(InetAddress.getByName("239.0.0.0"), 5000);
             NetworkInterface netInter = NetworkInterface.getByName("em1");
             socket.joinGroup(grupo, netInter); // nos unimos al grupo multicast
-            Scanner entrada = new Scanner(System.in);
             ReceptorMulticast w = new ReceptorMulticast(socket);
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in, "ISO-8859-1"));
 
             w.start();
 
             while (true) {
                 System.out.println("Escribir Mensaje: ");
-                String mensaje = entrada.nextLine();
-                DatagramPacket paquete = new DatagramPacket((nombre + ":" + mensaje).getBytes("UTF-8"), (nombre + ":" + mensaje).getBytes("UTF-8").length, grupo);
+                String mensaje = br.readLine();
+                DatagramPacket paquete = new DatagramPacket((nombre + ":" + mensaje).getBytes("ISO-8859-1"), (nombre + ":" + mensaje).getBytes("ISO-8859-1").length, grupo);
                 socket.send(paquete);
             }
             // socket.leaveGroup(grupo, netInter);
