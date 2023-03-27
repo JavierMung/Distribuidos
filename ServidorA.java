@@ -81,7 +81,7 @@ public class ServidorA {
             while (true) {
                 System.out.println("Escribir Mensaje: ");
                 String mensaje = entrada.nextLine();
-                DatagramPacket paquete = new DatagramPacket((nombre + ":" + mensaje).getBytes(), (nombre + ":" + mensaje).getBytes().length, grupo);
+                DatagramPacket paquete = new DatagramPacket((nombre + ":" + mensaje).getBytes("UTF-8"), (nombre + ":" + mensaje).getBytes("UTF-8").length, grupo);
                 socket.send(paquete);
             }
             // socket.leaveGroup(grupo, netInter);
