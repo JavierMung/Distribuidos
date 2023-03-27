@@ -2,10 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
-package com.mycompany.servidora;
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -13,15 +11,9 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
 import java.net.NetworkInterface;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.ByteBuffer;
 import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.Scanner;
 import java.util.logging.Level;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 /**
  *
@@ -75,7 +67,7 @@ public class ServidorA {
 
     public static void main(String[] args) throws IOException {
         // Creamos un MulticastSocket en el puerto y dirección multicast deseada
-        String nombre = args[0];
+        String nombre = "Pedro";
         try ( MulticastSocket socket = new MulticastSocket(5000)) {
             InetSocketAddress grupo = new InetSocketAddress(InetAddress.getByName("239.0.0.0"), 5000);
             NetworkInterface netInter = NetworkInterface.getByName("em1");
