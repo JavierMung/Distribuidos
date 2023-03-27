@@ -54,6 +54,7 @@ public class ServidorA {
                     String mensaje_parseado = new String(mensaje, "UTF-8");
                     String[] separar_mensaje = mensaje_parseado.split(":");
                     System.out.println(separar_mensaje[0] + "-----------> " + separar_mensaje[1]);
+                    System.out.println("Escribir Mensaje:");
                     //           }
 
                 } catch (IOException ex) {
