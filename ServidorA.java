@@ -75,7 +75,7 @@ public class ServidorA {
 
     public static void main(String[] args) throws IOException {
         // Creamos un MulticastSocket en el puerto y dirección multicast deseada
-        String nombre = "Pedro";
+        String nombre = args[0];
         try ( MulticastSocket socket = new MulticastSocket(5000)) {
             InetSocketAddress grupo = new InetSocketAddress(InetAddress.getByName("239.0.0.0"), 5000);
             NetworkInterface netInter = NetworkInterface.getByName("em1");
